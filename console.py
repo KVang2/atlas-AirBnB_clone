@@ -16,10 +16,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Exit the program on EOF"""
         return True
-    
-    def do_help(self, arg):
-        """Show informations"""
-        super().do_help(arg)
 
     def emptylin(self):
         """Empty line"""
