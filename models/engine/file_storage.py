@@ -35,11 +35,7 @@ class FileStorage:
                 for key, obj_dict in data.items():
                     class_name, obj_id = key.split('.')
                     # Dynamically create an instance of the class
-                    obj_class = globals().get(class_name)
-                    if obj_class and callable(obj_class):
-                        obj_instance = obj_class(**obj_dic)
-                        self.__objects[key] = obj_instance
-                    else:
-                        pass
+                    obj_instance = globals()[class_name](**obj_dict)
+                    self.__objects[key] = obj_instance
         except FileNotFoundError:
             pass  # No exception should be raised if the file doesn't exist
