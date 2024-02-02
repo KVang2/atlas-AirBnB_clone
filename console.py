@@ -14,10 +14,10 @@ class HBNBCommand(cmd.Cmd):
         return True
     
     def do_EOF(self, arg):
-        """Exit the program on EOF"""
+        """Exit program on EOF"""
         return True
 
-    def emptylin(self):
+    def emptyline(self):
         """Empty line"""
         pass
 
