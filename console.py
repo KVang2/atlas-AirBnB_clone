@@ -7,7 +7,6 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
-    intro = "Welcome to the command interpreter. Type 'help' for a list of commands."
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
@@ -26,5 +25,6 @@ class HBNBCommand(cmd.Cmd):
         """Empty line"""
         pass
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
