@@ -6,6 +6,7 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
+    """Command interpreter"""
     intro = "Welcome to the command interpreter. Type 'help' for a list of commands."
     prompt = "(hbnb) "
 
@@ -26,5 +27,4 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 if __name__ == "__main__":
-    hbnb_cmd = HBNBCommand()
-    hbnb_cmd.cmdloop()
+    HBNBCommand().cmdloop()
