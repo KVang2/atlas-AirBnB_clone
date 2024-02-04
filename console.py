@@ -5,6 +5,7 @@ Program that contains entry point of command interpreter:
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -99,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(class_name, instance_id)
             all_instances = storage.all()
             if key not in all_instances:
-                print("** no instance found **")
+                print("** class doesn't exist **")
                 return
             if len(args) < 3:
                 print("** attribute name missing **")
