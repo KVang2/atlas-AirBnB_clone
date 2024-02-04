@@ -57,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             class_name = args[0]
             if len(args) < 2:
-                print("** instance id missing **")
+                print("** class doesn't exist **")
                 return
             instance_id = args[1]
             key = "{}.{}".format(class_name, instance_id)
@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_instances[key]
                 storage.save()
             else:
-                print("** no instance found **")
+                print("** class doesn't exist **")
         except NameError:
             print("** class doesn't exist **")
 
