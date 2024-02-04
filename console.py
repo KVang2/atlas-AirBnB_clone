@@ -3,7 +3,7 @@
 Program that contains entry point of command interpreter:
 """
 import cmd
-import storage
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 
@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_instances[key]
                 storage.save()
             else:
-                print("** class doesn't exist **")
+                print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
 
