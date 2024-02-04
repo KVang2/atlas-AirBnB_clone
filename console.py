@@ -21,6 +21,9 @@ class HBNBCommand(cmd.Cmd):
         """Empty line"""
         pass
 
+    def create(self, arg):
+        """create"""
+        pass
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
