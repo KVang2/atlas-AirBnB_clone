@@ -38,8 +38,8 @@ class FileStorage:
                     # Dynamically create an instance of the class
                     obj_instance = globals().get(class_name)
 
-                    if obj_instance:
-                        obj_instance = obj_instance(**obj_dict)
+                    if issubclass(globals().get(class_name), BaseModel):
+                        obj_instance = globals().get(class_name)(**obj_dict)
                         self.__objects[key] = obj_instance
                     else:
                         print("Error: Class '{}' not found.".format(class_name))
