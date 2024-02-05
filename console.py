@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_instances[key]
                 storage.save()
             else:
-                print("** class doesn't exist **")
+                print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
 
