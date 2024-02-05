@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""
-Program that contains entry point of command interpreter:
-"""
 import cmd
 from models.__init__ import storage
 from models.base_model import BaseModel
 from models.user import User
+"""
+Program that contains the entry point of command interpreter
+"""
 
 
 

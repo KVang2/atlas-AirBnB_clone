@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""User file"""
 from models.base_model import BaseModel
+"""
+User class inheret from BaseModel
+"""
 
 
 class User(BaseModel):
