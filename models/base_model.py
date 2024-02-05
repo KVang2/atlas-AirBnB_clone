@@ -1,7 +1,6 @@
 #!/usr/bin/pytho3
 import uuid
 from datetime import datetime
-from models import storage
 """
 BaseModel class
 """
@@ -94,4 +93,6 @@ class BaseModel:
         instance_dict['created_at'] = self.created_at.isoformat()
         instance_dict['updated_at'] = self.updated_at.isoformat()
         return instance_dict
+
+from models import storage
 
