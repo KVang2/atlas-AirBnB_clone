@@ -1,11 +1,11 @@
 #!/usr/bin/python3
+import json
+from models.base_model import BaseModel
+from models.user import User
 """
 This class represents the serialization and
 deserialization of a file
 """
-import json
-from models.base_model import BaseModel
-from models.user import User
 
 
 class FileStorage:
@@ -36,6 +36,7 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to __objects."""
+        from models.base_model import BaseModel
         try:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
@@ -45,4 +46,3 @@ class FileStorage:
                     self.__objects[key] = obj_instance
         except FileNotFoundError:
             pass  # No exception should be raised if the file doesn't exist
-
