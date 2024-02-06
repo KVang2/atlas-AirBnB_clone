@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Program that contains the entry point of command interpreter
+Program that contains the entry point
+of command interpreter
 """
 import cmd
 import sys
@@ -16,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         """Exit the program"""
         return True
-    
+
     def do_EOF(self, arg):
         """Exit program on EOF"""
         return True
@@ -38,7 +39,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        """Prints the string representation of an instance"""
+        """Prints the string representation
+        of an instance"""
         if not arg:
             print("** class name missing **")
             return
@@ -55,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id"""
+        """Deletes an instance based on
+        the class name and id"""
         if not arg:
             print("** class name missing **")
             return
@@ -77,7 +80,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-        """Prints all string representation of all instances"""
+        """Prints all string representation of all
+        instances"""
         args = arg.split()
         all_instances = storage.all()
         if not arg or args[0] not in storage.classes():
@@ -91,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id"""
+        """Updates an instance based on the class name
+        and id"""
         if not arg:
             print("** class name missing **")
             return
