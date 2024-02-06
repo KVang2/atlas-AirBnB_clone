@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json
 from models.base_model import BaseModel
-from models.user import User
+from models import User
 """
 This class represent the serialization and
 deserialization of a file
