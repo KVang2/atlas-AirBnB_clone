@@ -5,4 +5,4 @@ from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
 storage.reload()
-all_classes = storage.all()
+classes = storage.all()
