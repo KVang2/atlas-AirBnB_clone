@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
 """
-This class inheret from BaseModel
+This class inherits from BaseModel
 """
 
 
 class State(BaseModel):
-    """State class attributes"""
+    """Puplic class attributes"""
+    name: str = ""
+
     def __init__(self, *args, **kwargs):
-        """Initialize State Instance"""
-        name = ""
+        super().__init__(*args, **kwargs)
