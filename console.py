@@ -6,7 +6,7 @@ import cmd
 import sys
 from models.__init__ import storage
 from models.base_model import BaseModel
-from models import User
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
