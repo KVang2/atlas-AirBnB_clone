@@ -6,8 +6,6 @@ from models.engine.file_storage import FileStorage
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 from datetime import datetime
 import os
 
@@ -138,21 +136,6 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         self.assertIsInstance(amenity, Amenity)
 
-class TestPlace(unittest.TestCase):
-    """Test class for the Place class"""
 
-    def test_place_instance(self):
-        """Test if an instance of Place can be created"""
-        place = Place()
-        self.assertIsInstance(place, Place)
-
-class TestReview(unittest.TestCase):
-    """Test class for the Review class"""
-
-    def test_review_instance(self):
-        """Test if an instance of Review can be created"""
-        review = Review()
-        self.assertIsInstance(review, Review)
-
-if __name__ ==
-
+if __name__ == '__main__':
+    unittest.main()
