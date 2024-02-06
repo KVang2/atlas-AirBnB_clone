@@ -2,6 +2,9 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
 """
 This class represents the serialization and
 deserialization of a file
@@ -14,7 +17,11 @@ class FileStorage:
 
     Classes = {
         'BaseModel': BaseModel,
-        'User': User
+        'User': User,
+        'BaseModel': BaseModel,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity
     }
 
     def all(self):
