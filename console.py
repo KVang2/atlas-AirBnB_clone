@@ -8,7 +8,6 @@ Program that contains the entry point of command interpreter
 """
 
 
-
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = "(hbnb) "
