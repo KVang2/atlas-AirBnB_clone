@@ -3,7 +3,8 @@
 Program that contains the entry point of command interpreter
 """
 import cmd
-from models import storage
+import sys
+from models.__init__ import storage
 from models.base_model import BaseModel
 from models import User
 
