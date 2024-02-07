@@ -12,8 +12,9 @@ deserialization of a file
 
 
 class FileStorage:
-    __file_path = "file.json"
-    __objects = {}
+    """FileStorage for storing and retrieving obj to/from JSON file"""
+    __file_path = "file.json" # Set path to the JSON file
+    __objects = {} # Dictionary to store objects
 
     Classes = {
         'BaseModel': BaseModel,
@@ -30,26 +31,26 @@ class FileStorage:
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id."""
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        key = "{}.{}".format(obj.__class__.__name__, obj.id) # Creating key using class name and obj id
+        self.__objects[key] = obj # Adding obj to obj dictionary
 
     def save(self):
         """Serializes __objects to the JSON file (__file_path)."""
-        serialized_objects = {}
+        serialized_objects = {} #Dictionary to store serialized obj
         for key, obj in self.__objects.items():
             serialized_objects[key] = obj.to_dict()
         with open(self.__file_path, 'w') as file:
-            json.dump(serialized_objects, file)
+            json.dump(serialized_objects, file) # Write serialized obj to file as JSON
 
     def reload(self):
         """Deserializes the JSON file to __objects."""
         from models.base_model import BaseModel
         try:
-            with open(self.__file_path, 'r') as file:
-                data = json.load(file)
-                for key, obj_dict in data.items():
-                    class_name, _ = key.split('.')
-                    obj_instance = self.Classes[class_name](**obj_dict)
-                    self.__objects[key] = obj_instance
+            with open(self.__file_path, 'r') as file: # Open file in read mode
+                data = json.load(file) # Load JSON data from file
+                for key, obj_dict in data.items(): # Iterate through obj in JSON data
+                    class_name, _ = key.split('.') # Extract class name from key
+                    obj_instance = self.Classes[class_name](**obj_dict) # Create instance of corresponding class
+                    self.__objects[key] = obj_instance # Add obj to __obj dict
         except FileNotFoundError:
             pass  # No exception should be raised if the file doesn't exist
