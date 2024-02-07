@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-"""amenity classes inherit from BaseModel"""
 from models.base_model import BaseModel
+"""Amenity class inherits from BaseModel"""
 
 
 class Amenity(BaseModel):
     """Amenity Class attributes"""
-    name = ""
+    name: str = ""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

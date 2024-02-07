@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""class inherit from BaseModel"""
 from models.base_model import BaseModel
+"""This class inherits from BaseModel"""
 
 
 class City(BaseModel):
-    """City class attributes"""
-    state_id = ""
-    name = ""
+    """Puplic class attributes"""
+    state_id: str = ""
+    name: str = ""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

@@ -1,36 +1,57 @@
 #!/usr/bin/python3
-"""
-Program that contains the entry point of command interpreter
-"""
+
 import cmd
-import sys
 from models.__init__ import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+"""
+Program that contains the entry point
+of command interpreter
+"""
 
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = "(hbnb) "
 
+    CLASSES = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
+    }
+
     def do_quit(self, arg):
         """Exit the program"""
         return True
-    
+
     def do_EOF(self, arg):
         """Exit program on EOF"""
         return True
 
+    def emptyline(self):
+        """Empty line"""
+        return False
+
     def do_create(self, arg):
-        """Creates a new instance of BaseModel"""
+        """Creates a new instance of a class"""
         if not arg:
             print("** class name missing **")
             return
         try:
-            new_instance = eval(arg)()
+            class_name = arg
+            new_instance = self.CLASSES[class_name]()
             new_instance.save()
             print(new_instance.id)
-        except NameError:
+        except KeyError:
             print("** class doesn't exist **")
 
     def do_show(self, arg):
@@ -47,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
             instance_id = args[1]
             key = "{}.{}".format(class_name, instance_id)
             print(storage.all().get(key, "** no instance found **"))
-        except NameError:
+        except KeyError:
             print("** class doesn't exist **")
 
     def do_destroy(self, arg):
@@ -69,21 +90,21 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             else:
                 print("** no instance found **")
-        except NameError:
+        except KeyError:
             print("** class doesn't exist **")
 
     def do_all(self, arg):
         """Prints all string representation of all instances"""
         args = arg.split()
         all_instances = storage.all()
-        if not arg or args[0] not in storage.classes():
+        if not arg or args[0] not in self.CLASSES:
             print([str(obj) for obj in all_instances.values()])
         else:
             try:
                 class_name = args[0]
                 print([str(obj) for key, obj in all_instances.items()
                        if key.startswith(class_name)])
-            except NameError:
+            except KeyError:
                 print("** class doesn't exist **")
 
     def do_update(self, arg):
@@ -94,6 +115,9 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         try:
             class_name = args[0]
+            if class_name not in self.CLASSES:
+                print("** class doesn't exist **")
+                return
             if len(args) < 2:
                 print("** instance id missing **")
                 return
@@ -101,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(class_name, instance_id)
             all_instances = storage.all()
             if key not in all_instances:
-                print("** class doesn't exist **")
+                print("** no instance found **")
                 return
             if len(args) < 3:
                 print("** attribute name missing **")
@@ -114,9 +138,10 @@ class HBNBCommand(cmd.Cmd):
             instance = all_instances[key]
             setattr(instance, attr_name, attr_value)
             instance.save()
-        except NameError:
+        except KeyError:
             print("** class doesn't exist **")
 
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
