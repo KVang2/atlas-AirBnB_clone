@@ -12,15 +12,22 @@ class BaseModel:
         """Initialize BaseModel instance."""
         from models import storage
 
+        # If keyword arguments exist or passed instantiation 
         if kwargs:
-            for key, value in kwargs.items():
+            for key, value in kwargs.items(): # Iterate through each key-value
+                # Checking key then convert value to datetime obj
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != '__class__':
                     setattr(self, key, value)
+                    # Set attribute with key as name and value as its value
+    
         else:
+            # If no kwargs, make new UUID for id
             self.id = str(uuid.uuid4())
+            # Set both attribute to current datetime
             self.created_at = self.updated_at = datetime.now()
+            # Add new instance to storage
             storage.new(self)
 
     def __str__(self):
