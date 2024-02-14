@@ -47,9 +47,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         try:
-            class_name = arg
+            class_name = arg # Extract class name from arg
             new_instance = self.CLASSES[class_name]()
-            new_instance.save()
+            new_instance.save() # Create new instance then save it
             print(new_instance.id)
         except KeyError:
             print("** class doesn't exist **")
@@ -59,14 +59,15 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        args = arg.split()
+        args = arg.split() # Splitting arg into a list
         try:
-            class_name = args[0]
-            if len(args) < 2:
+            class_name = args[0] # Extract class name from arg
+            if len(args) < 2: # Check instance ID
                 print("** instance id missing **")
                 return
-            instance_id = args[1]
-            key = "{}.{}".format(class_name, instance_id)
+            instance_id = args[1] # Extract instance ID from arg
+            key = "{}.{}".format(class_name, instance_id) 
+            # Create key to search for instance
             print(storage.all().get(key, "** no instance found **"))
         except KeyError:
             print("** class doesn't exist **")
