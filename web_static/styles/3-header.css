@@ -8,19 +8,4 @@ header {
     border-bottom: 1px solid #ccc;
     height: 70px;
     width: 100%;
-<<<<<<< HEAD
-  }
-=======
-    border-bottom: 1px solid #cccccc;
 }
-
-.logo {
-    display: flex;
-    position: fixed;
-    align-items: left;
-    background: url("../images/logo.png") center;
-    margin-left: 20px;
-    height: 30px;
-    width: auto;
-}
->>>>>>> edaac06e3f3e14f0feb195795112c77c3468de02
