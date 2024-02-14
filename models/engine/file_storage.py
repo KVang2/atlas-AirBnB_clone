@@ -5,6 +5,8 @@ from models.user import User
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 """
 This class represents the serialization and
 deserialization of a file
@@ -22,7 +24,9 @@ class FileStorage:
         'BaseModel': BaseModel,
         'State': State,
         'City': City,
-        'Amenity': Amenity
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
     }
 
     def all(self):
