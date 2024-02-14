@@ -6,6 +6,11 @@ header {
 }
 
 .logo {
+    display: flex;
+    position: fixed;
+    align-items: left;
+    background: url("../images/logo.png") center;
     margin-left: 20px;
-    line-height: 70px;
+    height: 30px
+    width: auto
 }
